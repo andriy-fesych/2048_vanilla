@@ -224,9 +224,11 @@ window.addEventListener('click', (e) => {
       e.target.innerText = 'Restart';
       e.target.classList.add('restart');
       startMessage.classList.add('hidden');
+      loseMessage.classList.add('hidden');
     } else {
       confetti.stop();
       winMessage.classList.add('hidden');
+      loseMessage.classList.add('hidden');
       score.innerText = '0';
       allTiles.forEach(tile => changeValue(tile, ''));
       moveDone = false;
