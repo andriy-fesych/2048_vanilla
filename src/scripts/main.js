@@ -10,6 +10,8 @@
   Missing movement animation
 */
 
+const { confetti } = require('./confetti.js');
+
 document.body.addEventListener('touchmove', function(e) {
   e.preventDefault();
 }, { passive: false });
@@ -84,6 +86,7 @@ function checkFor2048() {
     // player won the game
     gameState = 'win';
     winMessage.classList.remove('hidden');
+    confetti.start();
   }
 }
 
@@ -222,6 +225,8 @@ window.addEventListener('click', (e) => {
       e.target.classList.add('restart');
       startMessage.classList.add('hidden');
     } else {
+      confetti.stop();
+      winMessage.classList.add('hidden');
       score.innerText = '0';
       allTiles.forEach(tile => changeValue(tile, ''));
       moveDone = false;
